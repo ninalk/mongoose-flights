@@ -17,7 +17,14 @@ function index(req, res){
 }
 
 function newFlight(req, res){
-  res.render('flights/new');
+  const newFlight = new Flight();
+  // Obtain the default date
+  const dt = newFlight.departs;
+  console.log(dt)
+  // Format the date for the value attribute of the input
+  const departsDate = dt.toISOString().slice(0, 16);
+  console.log(departsDate)
+  res.render('flights/new', {departsDate});
 }
 
 function create(req, res){
