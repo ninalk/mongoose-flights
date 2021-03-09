@@ -3,6 +3,16 @@ const mongoose = require('mongoose');
 //optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
 
+const destinationSchema = new Schema({
+  airport: {
+    type: String,
+    enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
+  },
+  arrival: {
+    type: Date
+  }
+});
+
 const flightSchema = new Schema({
   airline: {
     type: String,
@@ -13,6 +23,7 @@ const flightSchema = new Schema({
     default: 'DEN',
     enum: ['ATL', 'DFW', 'DEN', 'LAX', 'SAN']
   },
+  destinations: [destinationSchema],
   flightNo: {
     type: Number,
     min: 10,
@@ -21,8 +32,13 @@ const flightSchema = new Schema({
   departs: {
     type: Date,
     default: function() {
-      return new Date().getFullYear() + 1; // one year from date created
-    } 
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      let day = date.getDate();
+      let oneYearLater = new Date(year +1, month, day);
+      return oneYearLater; // one year from date created
+    }
   }
 });
 

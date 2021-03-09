@@ -49,8 +49,43 @@ form {
 
 table {
   margin: auto;
+  width: 800px;
 }
 
 h1 {
   text-align: center;
+}
+
+td > a {
+  color: darkslategray;
+}
+
+#show-page {
+  margin: auto;
+  width: 800px;
+}
+
+h5 {
+  text-align: center;
+}
+
+#show-page > a {
+  color: black;
+}
+
+.new-ticket-link {
+  background-color: grey;
+  height: 25px;
+  width: 160px;
+  border-radius: 5%;
+  text-align: center;
+  line-height: 25px;
+}
+
+th {
+  text-align: left;
+}
+
+#ticket-list > tbody > tr > td {
+  background-color: linen;
 }
