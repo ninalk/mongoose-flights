@@ -19,6 +19,8 @@ function create(req, res) {
   req.body.flight = flightId;
   Ticket.create(req.body, function(err, ticket) {
     console.log(ticket, ' THIS IS THE UPDATE TICKET')
-    res.redirect(`/flights/${flightId}`);
+    ticket.save(function(err){
+      res.redirect(`/flights/${flightId}`);
+    });
   });
 }
