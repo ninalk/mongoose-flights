@@ -3,7 +3,8 @@ const Flight = require('../models/flight');
 
 module.exports = {
   new: newTicket,
-  create
+  create,
+  delete: deleteTicket
 }
 
 function newTicket(req, res) {
@@ -18,9 +19,15 @@ function create(req, res) {
   let flightId = req.params.flightId;
   req.body.flight = flightId;
   Ticket.create(req.body, function(err, ticket) {
-    console.log(ticket, ' THIS IS THE UPDATE TICKET')
     ticket.save(function(err){
       res.redirect(`/flights/${flightId}`);
     });
+  });
+}
+
+function deleteTicket(req, res) {
+  Ticket.findByIdAndDelete(req.params.id, function() {
+    console.log(req)
+    res.redirect(`/flights`);
   });
 }

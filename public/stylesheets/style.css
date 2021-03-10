@@ -88,4 +88,15 @@ th {
 
 #ticket-list > tbody > tr > td {
   background-color: linen;
+  padding: 0px 10px;
+}
+
+#delete-ticket > form {
+  background-color: linen;
+  width: 30px;
+  padding: 5px 20px;
+}
+
+#delete-ticket {
+  width: 8px;
 }
